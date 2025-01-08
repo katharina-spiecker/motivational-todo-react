@@ -24,7 +24,7 @@ export default function TodoBox() {
     }
 
     function handleCompleteTodo(index) {
-        const newTodos = [...todos];
+        const newTodos = structuredClone(todos);
         newTodos[index].completed = true;
         setTodos(newTodos);
     }
@@ -42,7 +42,7 @@ export default function TodoBox() {
             {
                 todos.map((todo, index) => 
                     <TodoItem
-                        key={index}
+                        key={todo.id}
                         todo={todo} 
                         index={index}
                         handleCompleteTodo={handleCompleteTodo}
